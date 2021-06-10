@@ -7,6 +7,11 @@ branding:
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'
+    required: true
+  use-pr-artifacts:
+    description: 'If production assets have been built in a previous step and downloaded for this step, analyze those instead of re-building'
+    required: false
+    default: ''
 runs:
   using: 'node12'
   main: 'index.js'

@@ -1,6 +1,7 @@
 import { getInput, setFailed } from '@actions/core';
 import { exec } from '@actions/exec';
 import { getOctokit, context } from '@actions/github';
+import yn from 'yn';
 
 import {
   normaliseFingerprint,
@@ -15,10 +16,14 @@ let octokit;
 async function run() {
   try {
     const myToken = getInput('repo-token', { required: true });
+    const usePrArtifacts = yn(getInput('use-pr-artifacts', { required: false }));
+
+    const cwd = process.cwd();
+
     octokit = getOctokit(myToken);
     const pullRequest = await getPullRequest(context, octokit);
 
-    const prAssets = await getAssetSizes();
+    const prAssets = await getAssetSizes({ cwd, build: !usePrArtifacts });
 
     await exec(`git checkout ${pullRequest.base.sha}`);
 
