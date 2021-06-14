@@ -7,6 +7,10 @@ branding:
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'
+  show-totals:
+    description: 'Display a table of bundle size total sizes'
+    required: false
+    default: 'no'
   update-comments:
     description: 'Update existing asset size comment instead of creating a new one each time'
     required: false

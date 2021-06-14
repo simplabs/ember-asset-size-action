@@ -95,6 +95,17 @@ jobs:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
+### Displaying total asset sizes
+
+If you'd like the PR comment to display total asset sizes for the PR's build, not just the diff compared to the base branch, you can use the `show-totals` option:
+
+```yaml
+- uses: simplabs/ember-asset-size-action@v1
+  with:
+    repo-token: "${{ secrets.GITHUB_TOKEN }}"
+    show-totals: "yes"
+```
+
 ## License
 
 Ember Simple Auth is developed by and &copy; [simplabs GmbH](http://simplabs.com) and contributors. It is released under the [MIT License](LICENSE).
