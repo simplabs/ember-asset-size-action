@@ -11,6 +11,14 @@ inputs:
     description: 'Update existing asset size comment instead of creating a new one each time'
     required: false
     default: 'yes'
+  working-directory:
+    description: 'The directory to run the action from'
+    required: false
+    default: ''
+  use-pr-artifacts:
+    description: 'If production assets have been built in a previous step and downloaded for this step, analyze those instead of re-building'
+    required: false
+    default: false
 runs:
   using: 'node12'
   main: 'index.js'
