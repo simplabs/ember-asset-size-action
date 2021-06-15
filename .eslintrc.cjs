@@ -9,6 +9,16 @@ module.exports = {
     'import/extensions': 0,
   },
   overrides: [
+    {
+      files: ['main.js'],
+      rules: {
+        // the `run` function is exported, and therefor can only be ran
+        // after the entire file has been evaluated, so no-use-before-define does not apply
+        // and does not protect against anything.
+        // (this rule does come in handy _if_ we invoke functions in module-scope though (side-effect))
+        'no-use-before-define': 0,
+      }
+    },
     // node files
     {
       files: [
